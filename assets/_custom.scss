@@ -1,0 +1,32 @@
+/*
+  Custom styles for larger content border
+*/
+
+/* Add larger padding around the main content area */
+.container {
+  padding: 2rem 1.5rem;
+  max-width: calc(#{$container-max-width} + 3rem);
+}
+
+/* Add border and extra spacing to the main content */
+.book-page {
+  .book-header,
+  .book-footer {
+    margin: 0 1rem;
+  }
+  
+  .book-page-content {
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    background: var(--body-background);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Ensure menu and TOC also get proper spacing */
+.book-menu .book-menu-content,
+.book-toc .book-toc-content {
+  padding: 1rem;
+}
