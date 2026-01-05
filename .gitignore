@@ -1,0 +1,22 @@
+# Hugo build output
+public/
+
+# Hugo generated resources
+resources/_gen/
+
+# Temporary files
+tmp/
+
+# Hugo build lock file
+.hugo_build.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
