@@ -1,0 +1,10 @@
+name = "clare"
+compatibility_date = "2026-01-05"
+
+# Serve the Hugo-generated public directory as static assets
+[site]
+bucket = "./public"
+
+# Optional: Configure custom 404 page
+# [site.error-responses]
+# "404.html" = "/404.html"
