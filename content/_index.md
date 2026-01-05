@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Patara"
+title: "Clare Donegan"
 # layout: landing
 weight: 1
 ---

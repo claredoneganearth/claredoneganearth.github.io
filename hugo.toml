@@ -1,4 +1,24 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'Welcome to Patara'
+title = 'Care Donegan'
 
+theme = 'hugo-book'
+
+# Needed for mermaid/katex shortcodes
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+BookSearch = false
+# Use docs as the main book section
+BookSection = "docs"
+# Disable page navigation buttons
+BookDisableNavigation = true
+
+# Hugo Book theme menus
+[menu]
+[[menu.after]]
+name = "Instagram"
+url = "https://instagram.com/yourusername"
+weight = 10
