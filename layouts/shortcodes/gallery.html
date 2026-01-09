@@ -1,11 +1,38 @@
-<!-- PhotoSwipe CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+{{- $dir := .Get 0 | default "images" -}}
+{{- $columns := .Get 1 | default "3" -}}
+{{- $width := .Get 2 | default "85" -}}
+{{- $galleryId := printf "gallery-%s" ($dir | replaceRE "[^a-zA-Z0-9]+" "-") -}}
 
-<!-- PhotoSwipe Gallery HTML -->
-<div class="gallery-wrapper {{ with .Get " align" }}align-{{ . }}{{ end }}"
-  style="display: flex; justify-content: flex-end;">
-  <div class="image-gallery">
-    {{- $dir := .Get 0 | default "images" -}}
+<!-- Load lightGallery assets once -->
+<script>
+  if (!window.lightGalleryLoaded) {
+    window.lightGalleryLoaded = true;
+    document.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css">');
+
+    const scripts = [
+      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js',
+      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js',
+      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js'
+    ];
+
+    let loaded = 0;
+    scripts.forEach(src => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => {
+        loaded++;
+        if (loaded === scripts.length) {
+          window.dispatchEvent(new Event('lightGalleryReady'));
+        }
+      };
+      document.head.appendChild(script);
+    });
+  }
+</script>
+
+<!-- Gallery HTML -->
+<div class="gallery-wrapper-{{ $galleryId }}">
+  <div id="{{ $galleryId }}" class="image-gallery gallery-{{ $galleryId }}" data-gallery-id="{{ $galleryId }}">
     {{- $images := slice -}}
     {{- range (readDir (printf "static/%s" $dir)) -}}
     {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".gif" ".webp") (path.Ext .Name | lower)) -}}
@@ -14,21 +41,59 @@
     {{- end -}}
 
     {{- range $index, $image := $images -}}
-    <a href="/{{ $dir }}/{{ $image.Name }}" data-pswp-width="1200" data-pswp-height="800" target="_blank">
+    <a href="/{{ $dir }}/{{ $image.Name }}" class="gallery-item-{{ $galleryId }}">
       <img src="/{{ $dir }}/{{ $image.Name }}" alt="Gallery image {{ $index }}">
     </a>
     {{- end -}}
   </div>
+</div>
 
-  <!-- PhotoSwipe JavaScript -->
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js';
+<style>
+  .gallery- {
+      {
+      $galleryId
+    }
+  }
 
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '.image-gallery',
-      children: 'a',
-      pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.js')
-    });
+    {
+    column-count: {
+        {
+        $columns
+      }
+    }
 
-    lightbox.init();
-  </script>
+    ;
+
+    max-width: {
+        {
+        $width
+      }
+    }
+
+    %;
+  }
+</style>
+
+<script>
+  (function () {
+    function initGallery() {
+      const gallery = document.getElementById('{{ $galleryId }}');
+      if (gallery && !gallery.lgInstance && typeof lightGallery !== 'undefined') {
+        gallery.lgInstance = lightGallery(gallery, {
+          selector: 'a',
+          speed: 500,
+          plugins: [lgZoom, lgThumbnail],
+          thumbnail: true,
+          download: false,
+          getCaptionFromTitleOrAlt: false
+        });
+      }
+    }
+
+    if (typeof lightGallery !== 'undefined') {
+      initGallery();
+    } else {
+      window.addEventListener('lightGalleryReady', initGallery);
+    }
+  })();
+</script>
