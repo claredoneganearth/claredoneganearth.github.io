@@ -1,0 +1,14 @@
+{{- $image := .Get "image" -}}
+{{- $text := .Get "text" -}}
+{{- $alt := .Get "alt" | default "Haiku image" -}}
+{{- $style := .Get "style" | default "height: 95vh;" -}}
+{{- $.Page.Scratch.Set "hasHaiku" true -}}
+
+<div class="haiku-section" data-haiku-text="{{ $text }}">
+    <div class="haiku-image">
+        <img src="{{ $image }}" alt="{{ $alt }}" style="{{ $style }}" loading="lazy">
+    </div>
+    <div class="haiku-text-mobile">
+        {{ $text | markdownify }}
+    </div>
+</div>

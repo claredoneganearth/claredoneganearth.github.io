@@ -93,12 +93,18 @@
 {{ end }}
 
 {{ define "toc-container" }}
-  {{ if partial "docs/toc-show" . }}
-  <aside class="book-toc">
-    <div class="book-toc-content">
-      {{ template "toc" . }}
-    </div>
-  </aside>
+  {{ if .Scratch.Get "hasHaiku" }}
+    <!-- Haiku text display for pages with haiku shortcode -->
+    <aside class="book-haiku-text">
+      {{ partial "docs/haiku-text" . }}
+    </aside>
+  {{ else if partial "docs/toc-show" . }}
+    <!-- Regular ToC for other pages -->
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        {{ template "toc" . }}
+      </div>
+    </aside>
   {{ end }}
 {{ end }}
 

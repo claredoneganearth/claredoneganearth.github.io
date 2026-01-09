@@ -20,7 +20,7 @@ $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
   --body-font-weight: 400;
   --body-background: #eaeeee;
   --body-background-tint: transparent;
-  --body-font-color: black;
+  --body-font-color: #191716;
 
   --border-radius: 0.25rem;
 }
@@ -29,7 +29,7 @@ $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 @mixin theme-light {
   --body-background: #eaeeee;
   --body-background-tint: none;
-  --body-font-color: black;
+  --body-font-color: #191716;
 
   --color-link: #0055bb;
   --color-visited-link: #5500bb;
