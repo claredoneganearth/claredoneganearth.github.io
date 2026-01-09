@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'Care Donegan'
+title = 'Clare Donegan'
 
 theme = 'hugo-book'
 
@@ -21,4 +21,4 @@ BookDisableNavigation = true
 [[menu.after]]
 name = "Instagram"
 url = "https://www.instagram.com/clarerdonegan/"
-weight = 10
+weight = 5
