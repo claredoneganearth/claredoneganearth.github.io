@@ -1,0 +1,12 @@
+{{- $image := .Get "image" -}}
+{{- $text := .Get "text" -}}
+{{- $alt := .Get "alt" | default "Haiku image" -}}
+
+<div class="haiku-alternate-layout">
+    <div class="haiku-alternate-image">
+        <img src="{{ $image }}" alt="{{ $alt }}" loading="lazy">
+    </div>
+    <div class="haiku-alternate-text">
+        {{ $text | markdownify }}
+    </div>
+</div>
