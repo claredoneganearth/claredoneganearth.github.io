@@ -1,6 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Clare Donegan'
+copyright = 'Clare Donegan 2026'
 
 theme = 'hugo-book'
 

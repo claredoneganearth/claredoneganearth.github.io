@@ -33,10 +33,29 @@ body {
 .book-menu .book-menu-content {
   padding-left: 3rem;
   padding-top: 2rem;
+  padding-bottom: 28.5rem; /* Add space for copyright at bottom */
   font-size: 0.9rem;
   position: relative; /* Override fixed positioning from theme */
+  background: #DBDAEA; /* Ensure menu background matches body */
   @media (max-width: 768px) {
       padding-left: 1rem;
+  }
+}
+
+/* Copyright at bottom of viewport */
+.book-menu-copyright {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 16rem; /* Same as menu width */
+  padding: 1rem;
+  padding-left: 3rem; /* Match menu padding */
+  font-size: 0.875rem;
+  color: #666; /* Slightly muted color */
+  background: #DBDAEA; /* Match body/menu background */
+  pointer-events: none; /* Allow clicks to pass through to content below */
+  @media (max-width: 768px) {
+    padding-left: 1rem; /* Match mobile menu padding */
   }
 }
 
