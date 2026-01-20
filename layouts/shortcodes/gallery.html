@@ -1,38 +1,10 @@
-{{- $dir := .Get 0 | default "images" -}}
-{{- $columns := .Get 1 | default "2" -}}
-{{- $width := .Get 2 | default "100" -}}
+{{- $dir := .Get "dir" | default (.Get 0) | default "images" -}}
+{{- $columns := .Get "columns" | default (.Get 1) | default "3" -}}
+{{- $spanFirst := .Get "spanFirst" | default "false" -}}
 {{- $galleryId := printf "gallery-%s" ($dir | replaceRE "[^a-zA-Z0-9]+" "-") -}}
 
-<!-- Load lightGallery assets once -->
-<script>
-  if (!window.lightGalleryLoaded) {
-    window.lightGalleryLoaded = true;
-    document.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css">');
-
-    const scripts = [
-      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js',
-      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js',
-      'https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js'
-    ];
-
-    let loaded = 0;
-    scripts.forEach(src => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.onload = () => {
-        loaded++;
-        if (loaded === scripts.length) {
-          window.dispatchEvent(new Event('lightGalleryReady'));
-        }
-      };
-      document.head.appendChild(script);
-    });
-  }
-</script>
-
-<!-- Gallery HTML -->
 <div class="gallery-wrapper-{{ $galleryId }}">
-  <div id="{{ $galleryId }}" class="image-gallery gallery-{{ $galleryId }}" data-gallery-id="{{ $galleryId }}">
+  <div class="gallery gallery-{{ $galleryId }}">
     {{- $images := slice -}}
     {{- range (readDir (printf "static/%s" $dir)) -}}
     {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".gif" ".webp") (path.Ext .Name | lower)) -}}
@@ -41,47 +13,68 @@
     {{- end -}}
 
     {{- range $index, $image := $images -}}
-    <a href="/{{ $dir }}/{{ $image.Name }}" class="gallery-item-{{ $galleryId }}">
-      <img src="/{{ $dir }}/{{ $image.Name }}" alt="Gallery image {{ $index }}">
-    </a>
+    <div class="gallery-item{{ if and (eq $spanFirst "true") (eq $index 0) }} gallery-item-span{{ end }}">
+      <img src="/{{ $dir }}/{{ $image.Name }}" alt="Gallery image {{ $index }}" loading="lazy">
+    </div>
     {{- end -}}
   </div>
 </div>
 
 <style>
   .gallery-{{ $galleryId }} {
-    column-count: {{ $columns }};
-    max-width: {{ $width }}%;
+    display: grid;
+    {{- if eq (int $columns) 1 }}
+    grid-template-columns: 1fr;
+    {{- else if eq (int $columns) 2 }}
+    grid-template-columns: repeat(2, 1fr);
+    {{- else if eq (int $columns) 3 }}
+    grid-template-columns: repeat(3, 1fr);
+    {{- else if eq (int $columns) 4 }}
+    grid-template-columns: repeat(4, 1fr);
+    {{- else }}
+    grid-template-columns: repeat(3, 1fr);
+    {{- end }}
+    gap: 1rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
   
+  .gallery-{{ $galleryId }} .gallery-item {
+    text-align: right;
+  }
+  
+  .gallery-{{ $galleryId }} .gallery-item img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 120vh;
+    display: block;
+    margin-left: auto;
+  }
+  
+  /* Span first image across all columns */
+  .gallery-{{ $galleryId }} .gallery-item-span {
+    grid-column: 1 / -1;
+  }
+  
+  /* Tablet: reduce to 2 columns if more than 2 */
   @media (max-width: 768px) {
     .gallery-{{ $galleryId }} {
-      column-count: 1;
-      max-width: 100%;
+      {{- if gt (int $columns) 2 }}
+      grid-template-columns: repeat(2, 1fr);
+      {{- else if eq (int $columns) 2 }}
+      grid-template-columns: repeat(2, 1fr);
+      {{- else }}
+      grid-template-columns: 1fr;
+      {{- end }}
+    }
+  }
+  
+  /* Mobile: single column */
+  @media (max-width: 480px) {
+    .gallery-{{ $galleryId }} {
+      grid-template-columns: 1fr;
     }
   }
 </style>
-
-<script>
-  (function () {
-    function initGallery() {
-      const gallery = document.getElementById('{{ $galleryId }}');
-      if (gallery && !gallery.lgInstance && typeof lightGallery !== 'undefined') {
-        gallery.lgInstance = lightGallery(gallery, {
-          selector: 'a',
-          speed: 500,
-          plugins: [lgZoom, lgThumbnail],
-          thumbnail: true,
-          download: false,
-          getCaptionFromTitleOrAlt: false
-        });
-      }
-    }
-
-    if (typeof lightGallery !== 'undefined') {
-      initGallery();
-    } else {
-      window.addEventListener('lightGalleryReady', initGallery);
-    }
-  })();
-</script>
