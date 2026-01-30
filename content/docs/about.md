@@ -5,7 +5,7 @@ weight: 1
 
 <div class="text-container">
 
-![Clare Donegan](/images/contact/clare.jpg)
+![Clare Donegan](/images/about/clare.jpg)
 
 Photography was my first love.
 
