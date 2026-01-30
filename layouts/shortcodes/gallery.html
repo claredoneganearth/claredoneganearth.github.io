@@ -41,40 +41,35 @@
     
     function layoutGallery() {
       const items = Array.from(gallery.querySelectorAll('.gallery-item'));
-      const classified = items.map((item, index) => {
+      
+      items.forEach((item, index) => {
         const img = item.querySelector('img');
         const aspectRatio = img.naturalWidth / img.naturalHeight;
         const isPortrait = aspectRatio < 1;
-        item.classList.add(isPortrait ? 'portrait' : 'landscape');
-        return { item, isPortrait, index };
-      });
-      
-      // Count consecutive portraits
-      let i = 0;
-      while (i < classified.length) {
-        if (classified[i].isPortrait) {
-          let portraitCount = 0;
-          let j = i;
-          while (j < classified.length && classified[j].isPortrait) {
-            portraitCount++;
-            j++;
-          }
-          
-          // If odd number of portraits and there are at least 2 landscapes following
-          if (portraitCount % 2 === 1 && j < classified.length - 1 && 
-              !classified[j].isPortrait && j + 1 < classified.length && !classified[j + 1].isPortrait) {
-            // Mark the last portrait as paired with landscapes
-            classified[i + portraitCount - 1].item.classList.add('portrait-with-landscapes');
-            classified[j].item.classList.add('landscape-paired');
-            classified[j + 1].item.classList.add('landscape-paired');
-            i = j + 2;
-          } else {
-            i = j;
+        
+        if (isPortrait) {
+          item.classList.add('portrait');
+          // Check if next item is also portrait to pair them
+          if (index + 1 < items.length) {
+            const nextItem = items[index + 1];
+            const nextImg = nextItem.querySelector('img');
+            const nextAspectRatio = nextImg.naturalWidth / nextImg.naturalHeight;
+            const nextIsPortrait = nextAspectRatio < 1;
+            
+            if (!nextIsPortrait) {
+              // This portrait will be paired with horizontal images
+              item.classList.add('portrait-lead');
+              // Look ahead for the next two items
+              if (index + 2 < items.length) {
+                nextItem.classList.add('horizontal-paired');
+                items[index + 2].classList.add('horizontal-paired');
+              }
+            }
           }
         } else {
-          i++;
+          item.classList.add('horizontal');
         }
-      }
+      });
     }
   });
 </script>
@@ -90,53 +85,58 @@
   }
   
   .gallery-{{ $galleryId }} .gallery-item {
-    text-align: right;
+    width: 100%;
+    display: flex;
   }
   
   .gallery-{{ $galleryId }} .gallery-item img {
-    width: auto;
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    max-height: 120vh;
     display: block;
-    margin-left: auto;
   }
   
-  /* Landscape images span full width */
-  .gallery-{{ $galleryId }} .gallery-item.landscape {
+  /* Horizontal images span both columns */
+  .gallery-{{ $galleryId }} .gallery-item.horizontal {
     grid-column: 1 / -1;
   }
   
-  .gallery-{{ $galleryId }} .gallery-item.landscape img {
-    width: 100%;
-  }
-  
-  /* Portrait paired with landscapes */
-  .gallery-{{ $galleryId }} .gallery-item.portrait-with-landscapes {
+  /* Portrait images that lead a V+H+H pattern */
+  .gallery-{{ $galleryId }} .gallery-item.portrait-lead {
     grid-column: 1;
     grid-row: span 2;
   }
   
-  /* Paired landscapes take right column */
-  .gallery-{{ $galleryId }} .gallery-item.landscape-paired {
+  .gallery-{{ $galleryId }} .gallery-item.portrait-lead img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  /* Horizontal images paired with a portrait (V+H+H pattern) */
+  .gallery-{{ $galleryId }} .gallery-item.horizontal-paired {
     grid-column: 2;
     grid-row: span 1;
   }
   
-  .gallery-{{ $galleryId }} .gallery-item.landscape-paired img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  /* Regular portraits not in a special pattern */
+  .gallery-{{ $galleryId }} .gallery-item.portrait:not(.portrait-lead):not(.horizontal-paired) {
+    grid-column: auto;
   }
   
-  /* Mobile: single column */
+  /* Mobile: single column, all images behave the same */
   @media (max-width: 768px) {
     .gallery-{{ $galleryId }} {
       grid-template-columns: 1fr;
     }
     
-    .gallery-{{ $galleryId }} .gallery-item.landscape {
-      grid-column: 1;
+    .gallery-{{ $galleryId }} .gallery-item {
+      grid-column: 1 !important;
+      grid-row: span 1 !important;
+    }
+    
+    .gallery-{{ $galleryId }} .gallery-item.portrait-lead img {
+      height: auto;
+      object-fit: contain;
     }
   }
 </style>
