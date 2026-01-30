@@ -10,4 +10,8 @@ BookToC: false
 
 ---
 
+# Break
+
+Break is a monochrome photographic series documenting street dance workshops held at youth centres across the Calder Valley over one Summer break.
+
 {{< gallery "images/movement/breakdance" >}}
