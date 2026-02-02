@@ -11,6 +11,10 @@ weight: 5
 
 I’m open to commissions, collaborations, and conversations. Whether you have a project in mind, a shared curiosity, or simply want to connect, I’d love to hear from you.
 
-I can be reached via email at claredoneganearth@gmail.com, and post on instagram as [@clarerdonegan](https://www.instagram.com/clarerdonegan/).
+**Email:** claredoneganearth@gmail.com
 
+**Website:** [claredonegancreative.com](claredonegancreative.com) 
+
+<br>
+{{< grid "images/contact2" "4" >}}
 </div>

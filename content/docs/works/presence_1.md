@@ -27,4 +27,10 @@ In Delhi, people moved like living currents, quick-eyed and generous with curios
 ## Rishikesh
 Rishikesh slowed everything down. There were no strangers here, everyone offered smiles, silences, and stories.. shaped by the great mother of rivers and the abundant surrounding hills. I met people who spoke softly but carried depth, there was a sacredness in the mundane. Everywhere.
 
+{{< gallery dir="images/portraits/rishikesh" >}}
+
+
+## Bangkok
+Working in colour, the photographs focus on people encountered in informal economies and public spaces, from street vendors to passersby. The images are made at close range, emphasising intimacy and presence while remaining grounded in real interactions. Together, they form a record of the city’s social fabric, shaped by work, routine, and the individuals who inhabit it.
+
 {{< gallery dir="images/portraits/thai">}}
