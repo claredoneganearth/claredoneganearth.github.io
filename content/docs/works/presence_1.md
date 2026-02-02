@@ -9,8 +9,10 @@ weight: 1
 BookToC: false
 
 ---
+# Presence
+I’m drawn to portraiture as a way of engaging deeply with people and the realities of their everyday lives. Each portrait begins with conversation and trust, creating space for individuals to be seen on their own terms. Through this process, I aim to honor personal agency, complexity, and presence, highlighting the distinct ways people inhabit the world. My work is less about a single moment and more about conveying lived experience, self-expression, and the dignity found in being fully oneself.
 
-# Jamaica
+## Jamaica
 In St Elizabeth, I lived amongst country folk who spoke with their hands, their laughter, their pauses. Doors stayed open, music beckoned and stories travelled easily… tucked into everyday conversation. They knew the land by feel, the weather by scent, and people by heart. Living near them taught me that generosity can be quiet, steady, and deeply rooted.
 
 

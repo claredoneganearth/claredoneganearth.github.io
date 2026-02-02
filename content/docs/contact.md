@@ -7,9 +7,9 @@ weight: 5
 <div class="text-container">
 
 {{< grid "images/contact" "4" >}}
-<br><br>
+<br>
 
-I am open to commissions, collaborations and chats.
+I’m open to commissions, collaborations, and conversations. Whether you have a project in mind, a shared curiosity, or simply want to connect, I’d love to hear from you.
 
 I can be reached via email at claredoneganearth@gmail.com, and post on instagram as [@clarerdonegan](https://www.instagram.com/clarerdonegan/).
 

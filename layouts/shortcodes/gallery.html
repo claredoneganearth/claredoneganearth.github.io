@@ -41,28 +41,40 @@
     
     function layoutGallery() {
       const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+      const processedIndices = new Set();
       
       items.forEach((item, index) => {
+        if (processedIndices.has(index)) return;
+        
         const img = item.querySelector('img');
         const aspectRatio = img.naturalWidth / img.naturalHeight;
         const isPortrait = aspectRatio < 1;
         
         if (isPortrait) {
           item.classList.add('portrait');
-          // Check if next item is also portrait to pair them
-          if (index + 1 < items.length) {
+          
+          // Check if next item is also portrait to pair them (V+V pattern)
+          if (index + 1 < items.length && !processedIndices.has(index + 1)) {
             const nextItem = items[index + 1];
             const nextImg = nextItem.querySelector('img');
             const nextAspectRatio = nextImg.naturalWidth / nextImg.naturalHeight;
             const nextIsPortrait = nextAspectRatio < 1;
             
-            if (!nextIsPortrait) {
-              // This portrait will be paired with horizontal images
+            if (nextIsPortrait) {
+              // Two portraits side-by-side (V+V pattern)
+              item.classList.add('portrait-paired');
+              nextItem.classList.add('portrait');
+              nextItem.classList.add('portrait-paired');
+              processedIndices.add(index + 1);
+            } else {
+              // Portrait followed by horizontal images (V+H+H pattern)
               item.classList.add('portrait-lead');
               // Look ahead for the next two items
               if (index + 2 < items.length) {
                 nextItem.classList.add('horizontal-paired');
                 items[index + 2].classList.add('horizontal-paired');
+                processedIndices.add(index + 1);
+                processedIndices.add(index + 2);
               }
             }
           }
@@ -100,6 +112,11 @@
     grid-column: 1 / -1;
   }
   
+  /* Two portraits side-by-side (V+V pattern) */
+  .gallery-{{ $galleryId }} .gallery-item.portrait-paired {
+    grid-column: auto;
+  }
+  
   /* Portrait images that lead a V+H+H pattern */
   .gallery-{{ $galleryId }} .gallery-item.portrait-lead {
     grid-column: 1;
@@ -119,7 +136,7 @@
   }
   
   /* Regular portraits not in a special pattern */
-  .gallery-{{ $galleryId }} .gallery-item.portrait:not(.portrait-lead):not(.horizontal-paired) {
+  .gallery-{{ $galleryId }} .gallery-item.portrait:not(.portrait-lead):not(.horizontal-paired):not(.portrait-paired) {
     grid-column: auto;
   }
   
