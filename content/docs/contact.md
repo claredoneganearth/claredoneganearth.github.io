@@ -6,7 +6,7 @@ weight: 5
 
 <div class="text-container">
 
-{{< grid "images/contact" "4" >}}
+{{< grid dir="images/contact" columns="4" mobile_friendly="true" >}}
 <br>
 
 I’m open to commissions, collaborations, and conversations. Whether you have a project in mind, a shared curiosity, or simply want to connect, I’d love to hear from you.
@@ -16,5 +16,5 @@ I’m open to commissions, collaborations, and conversations. Whether you have a
 **Website:** [claredonegancreative.com](claredonegancreative.com) 
 
 <br>
-{{< grid "images/contact2" "4" >}}
+{{< grid dir="images/contact2" columns="4" mobile_friendly="true" >}}
 </div>
