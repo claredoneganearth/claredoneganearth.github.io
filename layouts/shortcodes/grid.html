@@ -8,9 +8,9 @@
 <div class="square-grid-{{ $gridId }}" data-aspect="{{ $aspect }}">
   {{- $images := slice -}}
   {{- range (readDir (printf "static/%s" $dir)) -}}
-  {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".gif" ".webp") (path.Ext .Name | lower)) -}}
-  {{- $images = $images | append . -}}
-  {{- end -}}
+    {{- if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".gif" ".webp") (path.Ext .Name | lower)) -}}
+      {{- $images = $images | append . -}}
+    {{- end -}}
   {{- end -}}
   {{- range $index, $image := $images -}}
   <div class="grid-item">
@@ -20,41 +20,15 @@
 </div>
 
 <style>
-  .square-grid- {
-      {
-      $gridId
-    }
-  }
-
-    {
+  .square-grid-{{ $gridId }} {
     display: grid;
-
-    grid-template-columns: repeat({
-        {
-        $columns
-      }
-    }
-
-    , 1fr);
-
-  gap: {
-      {
-      $gap
-    }
-  }
-
-  ;
-  width: 100%;
+    grid-template-columns: repeat({{ $columns }}, 1fr);
+    gap: {{ $gap }};
+    width: 100%;
   }
 
   /* Square aspect ratio */
-  .square-grid- {
-      {
-      $gridId
-    }
-  }
-
-  [data-aspect="square"] .grid-item {
+  .square-grid-{{ $gridId }}[data-aspect="square"] .grid-item {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
@@ -62,13 +36,7 @@
     background: #f0f0f0;
   }
 
-  .square-grid- {
-      {
-      $gridId
-    }
-  }
-
-  [data-aspect="square"] .grid-item img {
+  .square-grid-{{ $gridId }}[data-aspect="square"] .grid-item img {
     position: absolute;
     top: 0;
     left: 0;
@@ -78,97 +46,29 @@
   }
 
   /* Original aspect ratio */
-  .square-grid- {
-      {
-      $gridId
-    }
-  }
-
-  [data-aspect="original"] .grid-item {
+  .square-grid-{{ $gridId }}[data-aspect="original"] .grid-item {
     width: 100%;
   }
 
-  .square-grid- {
-      {
-      $gridId
-    }
-  }
-
-  [data-aspect="original"] .grid-item img {
+  .square-grid-{{ $gridId }}[data-aspect="original"] .grid-item img {
     width: 100%;
     height: auto;
     display: block;
   }
 
   @media (max-width: 768px) {
-      {
-        {
-        - if not $mobileFriendly
-      }
+    {{- if not $mobileFriendly }}
+    .square-grid-{{ $gridId }} {
+      grid-template-columns: repeat({{ if gt (int $columns) 2 }}2{{ else }}{{ $columns }}{{ end }}, 1fr);
     }
-
-    .square-grid- {
-        {
-        $gridId
-      }
-    }
-
-      {
-      grid-template-columns: repeat({
-          {
-          if gt (int $columns) 2
-        }
-      }
-
-      2 {
-          {
-          else
-        }
-      }
-
-        {
-          {
-          $columns
-        }
-      }
-
-        {
-          {
-          end
-        }
-      }
-
-      , 1fr);
-  }
-
-    {
-      {
-      - end
-    }
-  }
+    {{- end }}
   }
 
   @media (max-width: 480px) {
-      {
-        {
-        - if not $mobileFriendly
-      }
-    }
-
-    .square-grid- {
-        {
-        $gridId
-      }
-    }
-
-      {
+    {{- if not $mobileFriendly }}
+    .square-grid-{{ $gridId }} {
       grid-template-columns: 1fr;
     }
-
-      {
-        {
-        - end
-      }
-    }
+    {{- end }}
   }
 </style>

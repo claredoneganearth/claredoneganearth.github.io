@@ -1,0 +1,3 @@
+# Hugo templates - Prettier mangles Go template syntax
+layouts/
+themes/
