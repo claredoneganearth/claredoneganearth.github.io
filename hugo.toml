@@ -25,3 +25,9 @@ BookFavicon = "favicon.png"
 name = "Instagram"
 url = "https://www.instagram.com/clarerdonegan/"
 weight = 5
+
+# For github deployment
+# https://gohugo.io/host-and-deploy/host-on-github-pages/
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
