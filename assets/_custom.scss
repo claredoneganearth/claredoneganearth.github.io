@@ -5,6 +5,20 @@ body {
   background: #DBDAEA;
 }
 
+/* Link colors - scoped to content area only */
+.book-page a[href] {
+  color: #5B2333;
+}
+
+.book-page a[href]:visited {
+  color: #ba1b1d;
+}
+
+/* Active menu link color */
+.book-menu a.active {
+  color: #5B2333;
+}
+
   .container {
     padding-top: 1rem;
     // max-width: 90rem;
