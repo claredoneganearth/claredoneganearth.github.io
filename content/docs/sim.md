@@ -61,9 +61,9 @@ Editor at Penguin Press, content creator and social anthropologist. Supporting a
 Talks and presentations of findings at the following venues and events:
 
 - [Hebden Bridge Town Hall](https://www.hebdenbridgetownhall.org.uk/), Hebden Bridge
-- Everybody Arts, Halifax
-- [Dark Peak Photo Festival](https://www.darkpeakphoto.co.uk/)
-- Open Eye, Liverpool
-- Japan Week Manchester
+- [Everybody Arts](https://www.everybodyarts.org.uk/), Halifax
+- [Dark Peak Photo Festival](https://www.darkpeakphoto.co.uk/), Glossop
+- [Open Eye Gallery](https://openeye.org.uk/), Liverpool
+- [Japan Week](https://manchesterjapan.com/japan-week/), Manchester
 
 </div>
