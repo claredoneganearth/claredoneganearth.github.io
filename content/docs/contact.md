@@ -1,6 +1,7 @@
 ---
 title: "Contact"
 weight: 5
+bookHidden: true
 # layout: landing
 ---
 

@@ -22,6 +22,11 @@ BookFavicon = "favicon.png"
 # Hugo Book theme menus
 [menu]
 [[menu.after]]
+name = "Contact"
+url = "/docs/contact/"
+weight = 1
+
+[[menu.after]]
 name = "Instagram"
 url = "https://www.instagram.com/clarerdonegan/"
 weight = 5
