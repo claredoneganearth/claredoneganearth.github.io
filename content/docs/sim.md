@@ -2,7 +2,7 @@
 title: "Stillness in Motion"
 weight: 4.4
 bookToC: false
-visible: false
+bookHidden: true
 ---
 
 <div class="text-container">
