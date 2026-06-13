@@ -1,21 +1,38 @@
 ---
 title: "About"
 weight: 1
+bookToC: false
 ---
 
 <div class="text-container">
 
+![Clare Donegan](/images/about/clare2.jpg)
+
+## About
+My work explores the relationship between creativity, attention, nature and community.
+
+I am a socially engaged artist, photographer, facilitator and tea practitioner based in West Yorkshire. Through participatory arts projects, photography, nature connection experiences, contemplative tea gatherings and creative exchange, I create opportunities for people to slow down, pay attention and develop deeper relationships with themselves, each other and the places they inhabit.
+
+Originally from Dublin, Ireland, I moved to the UK to study New Media and Performance Art at the University of Salford. Alongside my creative practice, I later gained a Postgraduate Certificate in Arts Management, Policy and Practice from the University of Manchester. 
+
+For more than twenty years I have worked across community arts, photography, creative learning and socially engaged practice. I have designed and delivered projects for local authorities, arts organisations, schools, community groups and charities, often working with people whose voices are less frequently heard.
+
 ![Clare Donegan](/images/about/clare.jpg)
 
-Photography was my first love.
+## Biography
+In 2009 I founded Outta Place, a participatory arts organisation that connected young people and communities across geographical, cultural and social boundaries. Through dance, music, digital media and creative exchange, we developed projects that enabled people from different parts of the world to create together despite the distances between them. This experience continues to inform my interest in connection, dialogue and creative exchange as artistic processes.
 
-Growing up in Ireland, surrounded by shifting weather and quiet landscapes, I learned early to pay attention. Nature shaped how I see the world, and photography became a way of listening, a practice of noticing light, rhythm, and stillness. Long before it became a profession, it grounded me.
+Alongside my work in the arts, I have spent many years exploring mindfulness and contemplative practice. I became interested in how attention can be cultivated and how creativity can emerge from states of presence, curiosity and deep listening. These ideas continue to influence how I facilitate groups and design creative experiences.
 
-My life and work have since unfolded internationally. Living and working across different cultures deepened my sensitivity to place, gesture, and the subtle relationships between people and environment. Throughout these journeys, photography remained a constant, a way of staying rooted while moving outward.
+Nature has also become an increasingly important aspect and relationship of my practice. Through nature connection and forest therapy approaches, I create opportunities for people to engage more deeply with the living world through sensory awareness, observation and direct experience. I am particularly interested in how creative practice can help people develop meaningful relationships with the natural environments that surround them.
 
-Today, I am returning to photography as my primary practice. After a period of illness and change, it has become a mindfulness practice once again, a way to slow down, reconnect with the body, and work with care and intention.
+More recently, my work has expanded to include the study of Chá Dào, the Way of Tea. I am interested in tea as a contemplative art form that encourages attention, presence and connection. Through sharing carefully selected teas, I create welcoming spaces where people can gather, slow down and experience the richness of the present moment. I now offer public tea gatherings/ sessions, that bring together my interests in creativity, community and nature connection.
 
-This website marks the beginning of a new research-led phase of my work. Through Stillness in Motion (SIM), I am exploring gesture-based photography informed by contemplative practice, movement, and cross-cultural research, including immersive study in Japan. The work emerging here reflects a deep respect for process, presence, and the natural world.
+Today my work sits at the meeting point of socially engaged arts, photography, nature connection and contemplative tea practice. My work and practise to date tends to evolve around a central question; 
+
+*What becomes possible when we slow down enough to truly pay attention?*
+
+
 
 </div>
 
