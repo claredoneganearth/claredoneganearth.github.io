@@ -6,7 +6,7 @@ bookToC: false
 
 <div class="text-container">
 
-![Clare Donegan](/images/about/clare2.jpg)
+![Clare Donegan](/images/about/clare2_lg.png)
 
 ## About
 My work explores the relationship between creativity, attention, nature and community.
@@ -17,7 +17,7 @@ Originally from Dublin, Ireland, I moved to the UK to study New Media and Perfor
 
 For more than twenty years I have worked across community arts, photography, creative learning and socially engaged practice. I have designed and delivered projects for local authorities, arts organisations, schools, community groups and charities, often working with people whose voices are less frequently heard.
 
-![Clare Donegan](/images/about/clare.jpg)
+![Clare Donegan](/images/about/IMG_5215.png)
 
 ## Biography
 In 2009 I founded Outta Place, a participatory arts organisation that connected young people and communities across geographical, cultural and social boundaries. Through dance, music, digital media and creative exchange, we developed projects that enabled people from different parts of the world to create together despite the distances between them. This experience continues to inform my interest in connection, dialogue and creative exchange as artistic processes.
@@ -30,7 +30,7 @@ More recently, my work has expanded to include the study of Chá Dào, the Way o
 
 Today my work sits at the meeting point of socially engaged arts, photography, nature connection and contemplative tea practice. My work and practise to date tends to evolve around a central question; 
 
-*What becomes possible when we slow down enough to truly pay attention?*
+**What becomes possible when we slow down enough to truly pay attention?**
 
 
 
